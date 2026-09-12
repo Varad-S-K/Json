@@ -1,5 +1,45 @@
 [
   {
+    "name": "CNBC TV18 Prime",
+    "id": "143",
+    "category": "English",
+    "url": "https://jiotvmblive.cdn.jio.com/bpk-tv/CNBCTV18Prime_MOB/WDVLive/index.mpd",
+    "cookie": "__hdnea__=st=1789192811~exp=1789214411~acl=/*~hmac=ccfa0e1e8ba0fdb29cbcd23ab107addf8ce551720903eb1da0d1734a75f9a8fa",
+    "keyId": "eb19113c11ce5cfb80c89696765a0187",
+    "key": "b2797ce5e403ee22d8e36c6d5f2b6630",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/CNBCTV18Prime.png"
+  },
+  {
+    "name": "Colors HD",
+    "id": "144",
+    "category": "Entertainment",
+    "url": "https://jiotvmblive.cdn.jio.com/bpk-tv/ColorsHD_MOB/WDVLive/index.mpd",
+    "cookie": "__hdnea__=st=1789192811~exp=1789214411~acl=/*~hmac=ccfa0e1e8ba0fdb29cbcd23ab107addf8ce551720903eb1da0d1734a75f9a8fa",
+    "keyId": "5360e12d4bb2519a9148d1089a55908d",
+    "key": "7e8f500cef51595f3d43acafab1a8fb4",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/ColorsHD.png"
+  },
+  {
+    "name": "History TV18 HD",
+    "id": "146",
+    "category": "English",
+    "url": "https://jiotvpllive.cdn.jio.com/bpk-tv/History_HD_BTS/WDVLive/index.mpd",
+    "cookie": "__hdnea__=st=1789192811~exp=1789214411~acl=/*~hmac=ccfa0e1e8ba0fdb29cbcd23ab107addf8ce551720903eb1da0d1734a75f9a8fa",
+    "keyId": "0172b8cd13ed59349a05aadc58ae11e0",
+    "key": "e4ab7836617767a2a6e7aaae17fad2b6",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/History_HD.png"
+  },
+  {
+    "name": "Movies Now HD",
+    "id": "151",
+    "category": "English",
+    "url": "https://times-ott-live.akamaized.net/moviesnow_wv_drm/index.mpd",
+    "cookie": "__hdnea__=st=1789192811~exp=1789214411~acl=/*~hmac=ccfa0e1e8ba0fdb29cbcd23ab107addf8ce551720903eb1da0d1734a75f9a8fa",
+    "keyId": "40f019b86241d23ef075633fd7f1e927",
+    "key": "058dec845bd340178a388edd104a015e",
+    "logo": "https://jiotv.catchup.cdn.jio.com/dare_images/images/Movies_Now_HD.png"
+  },
+  {
     "name": "Zee Talkies",
     "id": "153",
     "category": "Marathi",

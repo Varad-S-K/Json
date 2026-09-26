@@ -20,11 +20,14 @@ LOCAL_CHANNELS_FILE = PROJECT_DIR / CHANNELS_URL.lstrip("/")
 USER_AGENT = "Varad"
 
 
-def get_json(url: str):
-    """Fetch JSON from HTTP or from a local absolute-style path."""
+def get_json(url: str, default=None):
+    """Fetch JSON from HTTP or local path. Returns `default` on 404/network errors."""
     if url.startswith("/"):
-        with LOCAL_CHANNELS_FILE.open("r", encoding="utf-8") as source:
-            return json.load(source)
+        try:
+            with LOCAL_CHANNELS_FILE.open("r", encoding="utf-8") as source:
+                return json.load(source)
+        except Exception:
+            return default if default is not None else {}
 
     fresh_url = f"{url}{'&' if '?' in url else '?'}t={int(time.time() * 1000)}"
     request = urllib.request.Request(
@@ -36,15 +39,19 @@ def get_json(url: str):
         },
     )
 
-    with urllib.request.urlopen(request, timeout=30) as response:
-        if not 200 <= response.status < 300:
-            raise OSError(f"Failed to fetch {url}: {response.status}")
-        return json.loads(response.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            if not 200 <= response.status < 300:
+                return default if default is not None else {}
+            return json.loads(response.read().decode("utf-8"))
+    except (urllib.error.HTTPError, urllib.error.URLError, json.JSONDecodeError) as err:
+        print(f"Warning: Failed to fetch {url} ({err}). Using fallback values.")
+        return default if default is not None else {}
 
 
 def get_normal_cookie() -> str:
     """Fetch the cookie source and return only its cookie value."""
-    data = get_json(COOKIE_URL)
+    data = get_json(COOKIE_URL, default="")
 
     if isinstance(data, str):
         return data.strip()
@@ -62,8 +69,12 @@ def get_normal_cookie() -> str:
 
 
 def get_sports_data():
-    data = get_json(SPORTS_COOKIE_URL)
+    data = get_json(SPORTS_COOKIE_URL, default={})
     sports_urls = {}
+    
+    if not isinstance(data, dict):
+        return sports_urls
+
     results = []
     results.extend(data.get("successful_results") or [])
     results.extend(data.get("failed_results") or [])
@@ -171,7 +182,7 @@ def write_atomically(path: Path, content: str):
 
 
 def generate_outputs():
-    channels = get_json(CHANNELS_URL)
+    channels = get_json(CHANNELS_URL, default=[])
     if isinstance(channels, dict):
         channels = channels.get("channels") or channels.get("data") or []
     if not isinstance(channels, list):

@@ -8,7 +8,7 @@ import urllib.request
 from pathlib import Path
 
 
-CHANNELS_URL = "https://raw.githubusercontent.com/Varad-S-K/Channel-Json/refs/heads/main/jtv_updated.json"
+CHANNELS_URL = "https://raw.githubusercontent.com/Varad-S-K/Channel-Json/refs/heads/main/JioTv_MOB.json"
 COOKIE_URL = "https://allinonereborn2.online/jstrweb2/cookies.json"
 SPORTS_COOKIE_URL = "https://sonujson-v3.pages.dev/Data/sports.json"
 
